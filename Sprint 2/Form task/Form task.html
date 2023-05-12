@@ -7,7 +7,7 @@
             <fieldset style="background: #D6ECD2; height: 96%; border-radius: 5px;">
                 <legend style="background-color:#5e735c; color:ivory; padding: 5px; border-radius: 5px;">Personal Data</legend> <br>
 
-                <fieldset style="background: #fae4e7d2; border-radius: 5px;">
+                <fieldset style="background: #fae4e7d2; border-radius: 5px; margin-bottom: 40px;">
                     <legend style="background-color: rgba(255, 255, 240, 0.863); color: rgba(240, 128, 128, 0.918); padding: 30px 3px; border-radius: 5px;">Your Name</legend> <br> 
                     
                     <label>First Name: </label>
@@ -16,7 +16,7 @@
                     <label>Last Name: </label>
                     <input type="text" name="LName" placeholder="ex. Shorrab" style="height: 20px; margin: 0px 0px 10px 10px; padding-left: 10px; border: 1px solid rgb(253, 253, 253); border-radius: 12px;">
                 </fieldset>
-                <br> <br>
+                
 
                     
                 <label>Phone: </label>
@@ -31,14 +31,14 @@
                 <label>Re-password:</label>
                 <input type="password" name="pass" required style="height: 20px; margin: 0px 00px 40px 7px; padding-left: 10px; border: 1px solid rgb(253, 253, 253); border-radius: 12px; "> <br>
 
-                <label style="font-weight: normal;">Gender</label> <br> <!-- user agent stylesheet -->
+                <label style="font-weight: normal;">Gender</label> <br> <!-- user agent stylesheet! -->
                 <input type="radio" name="Gender" value="male" id="male">
                 <label for="male" style="font-weight: normal;" >Male</label> <br>
-                <input type="radio" name="Gender" value="female" id="female">
+                <input type="radio" name="Gender" value="female" id="female" style="margin-bottom: 40px;">
                 <label for="female" style="font-weight: normal;">Female</label>
-                
-                <br><br>
-                <label style="font-weight: normal; margin-top: 50px;">Interests</label> <br>
+                <br>
+
+                <label style="font-weight: normal;">Interests</label> <br>
                 <input type="checkbox" name="Interests" value="Movies" id="movies">
                 <label for="movies" style="font-weight: normal;">Movies</label> <br>
                 <input type="checkbox" name="Interests" value="Books" id="books">
@@ -48,9 +48,9 @@
                 <input type="checkbox" name="Interests" value="Sports" id="sports">
                 <label for="sports" style="font-weight: normal;">Sports</label> <br>
                 
-                <br>
+                
                 <label style="font-weight: normal;">University: </label> 
-                <select name="Uni" style="height: 25px; margin-left: 15px; padding-left: 5px; border: 1px solid rgb(253, 253, 253); border-radius: 15px">
+                <select name="Uni" style="height: 25px; margin: 20px 0px 20px 15px; padding-left: 5px; border: 1px solid rgb(253, 253, 253); border-radius: 15px">
                     <option value="default" selected disapled style="color: grey;" > Choose a university </option>
                     <optgroup label="Egypt">
                         <option value="ASU" >Ain Shams University</option>
@@ -67,7 +67,7 @@
                         <option value="Newcastle">Newcastle University</option>
                     </optgroup>
                 </select> 
-                <br><br>
+                <br>
 
                 <button type="submit" style="background-color: #6c7e6b; color: #f7f9f7; font-weight: bold; height: 27; border: 0px solid; border-radius: 15px;"> SUBMIT </button>
             </fieldset>
