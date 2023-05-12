@@ -1,0 +1,93 @@
+<html>
+    <head>
+        <title>Registration form</title>
+    </head>
+    <body style="background: #FEFAFB;">
+        <form method="post">
+            <fieldset style="background: #D6ECD2; height: 96%;">
+                <legend style="background-color:#5e735c; color:ivory; padding: 4px;">Personal Data</legend> <br>
+
+                <fieldset style="background: #fae4e7d2;">
+                    <legend style="background-color: rgba(255, 255, 240, 0.863); color: rgba(240, 128, 128, 0.918); padding: 30px 3px;">Your Name</legend> <br> 
+                    <table>
+                        <tr>
+                            <td><label>First Name</label></td>
+                            <td>:</td>
+                            <td><input type="text" name="FName" placeholder="ex. Ahmed" required> </td>
+                        </tr>
+                        <tr>
+                            <td><label>Last Name</label></td>
+                            <td>:</td>
+                            <td><input type="text" name="LName" placeholder="ex. Shorrab"></td>
+                        </tr>
+                    </table>
+                </fieldset>
+                <br> <br>
+
+                <table >
+                    <tr>
+                        <td><label>Phone</label></td>
+                        <td>:</td>
+                        <td><input type="tel" name="phone"></td>
+                    </tr>
+                    <tr>
+                        <td><label>Email</label></td>
+                        <td>:</td>
+                        <td><input type="email" name="email" required></td>
+                    </tr>
+                    <tr>
+                        <td><label>Password</label></td>
+                        <td>:</td>
+                        <td><input type="password" name="pass" required></td>
+                    </tr>
+                    <tr>
+                        <td><label>Re-password</label></td>
+                        <td>:</td>
+                        <td><input type="password" name="pass" required></td>
+                    </tr>
+                </table>
+                <br><b><br>
+
+                <label style="font-weight: normal;">Gender</label> <br> <!-- user agent stylesheet -->
+                <input type="radio" name="Gender" value="male" id="male">
+                <label for="male" style="font-weight: normal;" >Male</label> <br>
+                <input type="radio" name="Gender" value="female" id="female">
+                <label for="female" style="font-weight: normal;">Female</label>
+                
+                <br><br>
+                <label style="font-weight: normal;">Interests</label> <br>
+                <input type="checkbox" name="Interests" value="Movies" id="movies">
+                <label for="movies" style="font-weight: normal;">Movies</label> <br>
+                <input type="checkbox" name="Interests" value="Books" id="books">
+                <label for="books" style="font-weight: normal;">Books</label> <br>
+                <input type="checkbox" name="Interests" value="Music" id="music">
+                <label for="music" style="font-weight: normal;">Music</label> <br>
+                <input type="checkbox" name="Interests" value="Sports" id="sports">
+                <label for="sports" style="font-weight: normal;">Sports</label> <br>
+                
+                <br>
+                <label style="font-weight: normal;">University: </label> 
+                <select name="Uni" style="height: 25px; border-radius: 5px">
+                    <option value="default" selected disapled style="color: grey;" > Choose a university </option>
+                    <optgroup label="Egypt">
+                        <option value="ASU" >Ain Shams University</option>
+                        <option value="Cairo">Cairo University</option>
+                        <option value="Alexandria">Alexandria University</option>
+                    </optgroup>
+                    <optgroup label="US">
+                        <option value="Harfard">Harvard University</option>
+                        <option value="Stanford">Stanford University</option>
+                    </optgroup>
+                    <optgroup label="UK">
+                        <option value="Oxford">Oxford University</option>
+                        <option value="Scotland">Cambridge University</option>
+                        <option value="Newcastle">Newcastle University</option>
+                    </optgroup>
+                </select> 
+                <br><br>
+
+                <button type="submit" style="background-color: #6c7e6b; color: #D6ECD2; font-weight: bold; height: 27; border: 0px solid; border-radius: 15px;"> SUBMIT </button>
+            </fieldset>
+        </form>
+    </body>
+</html>
