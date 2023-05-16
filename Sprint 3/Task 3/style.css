@@ -1,0 +1,119 @@
+body
+{
+    margin: 0px;
+    padding: 0px;
+} 
+
+.product-name, .product-desc
+{
+    color: darkkhaki;
+    margin: 30px 10px 3px ;
+}
+hr
+{
+    margin: 0;
+}
+.product-pic
+{
+    width: 300px;
+    display: block;
+    margin: 20px auto;
+    border: 2px solid darkgrey;
+}
+
+table
+{
+    text-align: center;
+    margin-left: 5px;
+}
+.info
+{
+    font-weight: bold;
+}
+.addButton
+{
+    margin: 10px 5px;
+    border: 1px solid darkgrey ;
+    border-radius: 3px ;
+    background-color: rgb(147, 146, 146);
+    color: aliceblue;
+    cursor: pointer;
+}
+.addButton:hover
+{
+    background-color: rgb(108, 107, 107);
+}
+
+/******************************/
+
+.nav
+{
+    height: 50px;
+    background-color: rgb(192, 190, 190);
+    position: relative;
+}
+.nav-menu 
+{
+    display: inline-block;
+    margin: 0px 60px 0px 20px;
+}
+.icon
+{
+    width: 20px;
+    margin-right: 10px;
+}
+.icons
+{
+    width: fit-content;
+    display: inline-block;
+    position: absolute;
+    top: 15px;
+    right: 10px;
+}
+.nav-items
+{
+    text-decoration: none;
+    color: black;
+    margin: 10px;
+}
+.categories 
+{
+    background-color: rgb(230, 228, 226);
+    width: 200px;
+    height: 20px;
+    display: inline-block;
+    margin-right: 10px;
+    padding: 15px 20px;
+
+    position: relative;
+    cursor: pointer;
+}
+.categories p
+{
+    width: fit-content;
+    display: inline;
+}
+.categories img
+{
+    width: 13px;
+}
+.subcategory
+{
+    position: absolute;
+    top: 50px;
+    left: 0px;
+    background-color: rgb(243, 242, 242);
+    width: 240px;
+    cursor: auto;
+    display: none;
+}
+.subcategory li
+{
+    margin-bottom: 10px;
+    list-style: inside;
+}
+
+.categories:hover  .subcategory
+{
+    display: block; 
+}
