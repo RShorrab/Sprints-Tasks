@@ -107,13 +107,18 @@ table
     cursor: auto;
     display: none;
 }
-.subcategory li
+
+.sub-items
 {
-    margin-bottom: 10px;
-    list-style: inside;
+    padding: 10px;
+    display: block;
+}
+.sub-items:hover
+{
+    background-color: rgb(208, 205, 205);
 }
 
-.categories:hover  .subcategory
+.categories:hover .subcategory
 {
     display: block; 
 }
