@@ -8,7 +8,7 @@ body
 {
     text-align: center;
     width: 60%;
-    margin: 100px auto ;
+    margin: 90px auto ;
     padding: 10px;
 }
 .container > p
@@ -30,7 +30,10 @@ button:active
     background-color: #e4e1e1;
 }
 
-
+#list
+{
+    display: none;
+}
 #songs-list
 {
     border: 2px solid #EFEFEF;

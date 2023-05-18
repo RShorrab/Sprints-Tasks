@@ -1,9 +1,15 @@
 function btntog() 
 {
-    var x = document.getElementById("list");
-    if (x.style.display === "none") {
-      x.style.display = "block";
-    } else {
-      x.style.display = "none";
+    var list = document.getElementById("list");
+    var button = document.getElementById("show-button")
+    if (list.style.display === "none") 
+    {
+      list.style.display = "block";
+      button.innerHTML = "Less!"
+    } 
+    else 
+    {
+      list.style.display = "none";
+      button.innerHTML = "Show me!"
     }
 }
