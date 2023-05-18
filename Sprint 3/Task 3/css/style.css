@@ -1,0 +1,55 @@
+body
+{
+    background-color: #532a7f;
+    color: #FFF;
+    font-family: sans-serif; /*Archivo font */
+}
+.container
+{
+    text-align: center;
+    width: 60%;
+    margin: 100px auto ;
+    padding: 10px;
+}
+.container > p
+{
+    width: 90%;
+    margin: auto;    
+}
+button
+{
+    color: #532a7f;
+    background-color: #EFEFEF;
+    padding: 10px;
+    margin: 20px;
+    border: none;
+    cursor: pointer;
+}
+button:active
+{
+    background-color: #e4e1e1;
+}
+
+
+#songs-list
+{
+    border: 2px solid #EFEFEF;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-align: left;
+    padding: 10px;
+}
+.num
+{
+    background-color: #735692;
+    padding: 5px;
+    margin: 0 10px;
+}
+
+@media  screen and (max-width:745px)
+{
+    #songs-list
+    {
+        grid-template-columns: 1fr;
+    } 
+}
