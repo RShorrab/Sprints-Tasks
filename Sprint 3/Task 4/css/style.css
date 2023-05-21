@@ -369,11 +369,11 @@ header .hidden-nav .main-nav-links .page-drop-down .sub-menu
 
 .welcome-section
 {
-    background-color: beige;
     display: grid;
     grid-template-columns: auto auto auto;
     grid-gap: 10px;
     margin: var(--page-margin);
+    padding-left: 30px;
     z-index: -999;
 }
 .welcome-section .carousel-section
@@ -481,6 +481,7 @@ header .hidden-nav .main-nav-links .page-drop-down .sub-menu
     {
         grid-template-columns: auto;
         margin-inline: 20px;
+        padding-left: 0px;
         grid-gap: 30px;
     }
     .welcome-section .carousel-section
