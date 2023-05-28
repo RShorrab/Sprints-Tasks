@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Operation button</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+    </head>
+    <body>
+        <div class="d-flex w-100 justify-content-center align-items-center bg-dark" style="height: 100vh;">
+            <div class="d-flex w-50 justify-content-center bg-dark-subtle p-3 rounded">
+                <div class="p-3 w-100">
+                    <input type="text" placeholder="Enter first number" class="form-control mb-3" id="firstInput">
+                    <input type="text" placeholder="Enter second number" class="form-control mb-3" id="secondInput">
+                    <p>The result is: <span id="result" class="ms-2 text-danger"></span> </p>
+                </div>
+                <div class="d-flex flex-column">
+                    <button class="btn btn-dark m-1" id="sum" onclick=getResult(this.id)> + </button>
+                    <button class="btn btn-dark m-1" id="minus" onclick=getResult(this.id)> - </button>
+                    <button class="btn btn-dark m-1" id="multiply" onclick=getResult(this.id)> x </button>
+                    <button class="btn btn-dark m-1" id="divide" onclick=getResult(this.id)> / </button>
+                </div>
+               
+            </div>
+        </div>
+        
+
+        <!-- <div class="d-flex w-100 justify-content-center align-items-center bg-primary-subtle" style="height: 100vh;">
+            <div class="p-3 w-75 bg-success-subtle">
+                <input type="text" placeholder="Enter first number" class="form-control mb-3" id="firstInput">
+                <input type="text" placeholder="Enter second number" class="form-control mb-3" id="secondInput">
+                <div class="d-flex mb-3 ">
+                    <button class="btn btn-success m-1" id="sum" onclick=getResult(this.id)> + </button>
+                    <button class="btn btn-success m-1" id="minus" onclick=getResult(this.id)> - </button>
+                    <button class="btn btn-success m-1" id="multiply" onclick=getResult(this.id)> x </button>
+                    <button class="btn btn-success m-1" id="divide" onclick=getResult(this.id)> / </button>
+                </div>
+
+                <p>The result is: <span id="result" class="ms-2 text-danger"></span> </p>
+            </div>
+        </div> -->
+        
+
+
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/index.js"></script>
+    </body>
+</html>
