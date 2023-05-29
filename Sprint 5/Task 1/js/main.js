@@ -45,10 +45,11 @@ function addTask()
         }
         tasks.push(task);
         localStorage.setItem("tasks", JSON.stringify(tasks));
+        document.getElementById("taskNameAlert").classList.add("d-none")
     }
     else
     {
-        alert("You should enter the task name!")
+        document.getElementById("taskNameAlert").classList.remove("d-none")
         addBtn.disabled="true";
     }
 }
@@ -110,10 +111,11 @@ function editTask() //actual editing func.
         localStorage.setItem("tasks", JSON.stringify(tasks));
         addBtn.innerHTML="Add Task";
         addBtn.disabled="true";
+        document.getElementById("taskNameAlert").classList.add("d-none")
     }
     else
     {
-        alert("check your inputs!")
+        document.getElementById("taskNameAlert").classList.remove("d-none")
         addBtn.disabled="true";
     }
 }
@@ -156,3 +158,15 @@ taskPriorityInput.onkeyup = function() //Task verification
         return true;
     }
 }
+
+let table = document.getElementById("tasks-table")
+let switched;
+let rows = table.rows;
+
+/* function sortTable()
+{
+    let table = document.getElementById("tasks-table")
+    let switched;
+    let rows = table.rows;
+
+} */
