@@ -174,8 +174,8 @@ function sortDesByPriority(tasks)
 
 function sortAscByName(tasks)
 {
-    tasks.sort((a,b) => a.taskName.localeCompare(b.taskName))
-    display()
+    let sorted = tasks.sort((a,b) => a.taskName.localeCompare(b.taskName))
+    display(sorted)
 }
 function sortDesByName(tasks)
 {
@@ -190,14 +190,14 @@ let sortingByPriority = document.getElementById("sortingByPriority")
         sortAscByPriority(tasks)
         sortingByPriority.classList.remove("Asc")
         sortingByPriority.classList.add("Des")
-        sortingByName.innerHTML = `Task Priority <span> <i class="fa fa-caret-down" aria-hidden="true"></i> </span>`
+        sortingByPriority.innerHTML = `Task Priority <span> <i class="fa fa-caret-down" aria-hidden="true"></i> </span>`
     }
     else if(sortingByPriority.classList.contains("Des"))
     {
         sortDesByPriority(tasks)
         sortingByPriority.classList.remove("Des")
         sortingByPriority.classList.add("Asc")
-        sortingByName.innerHTML = `Task Priority <span> <i class="fa fa-caret-up" aria-hidden="true"></i> </span>`
+        sortingByPriority.innerHTML = `Task Priority <span> <i class="fa fa-caret-up" aria-hidden="true"></i> </span>`
     }
 })
 
@@ -205,14 +205,14 @@ let sortingByName = document.getElementById("sortingByName")
  sortingByName.addEventListener("click", e => {
     if(sortingByName.classList.contains("Asc"))
     {
-        sortAscByPriority(tasks)
+        sortAscByName(tasks)
         sortingByName.classList.remove("Asc")
         sortingByName.classList.add("Des")
         sortingByName.innerHTML = `Task Name <span> <i class="fa fa-caret-down" aria-hidden="true"></i> </span>`
     }
     else if(sortingByName.classList.contains("Des"))
     {
-        sortDesByPriority(tasks)
+        sortDesByName(tasks)
         sortingByName.classList.remove("Des")
         sortingByName.classList.add("Asc")
         sortingByName.innerHTML = `Task Name <span> <i class="fa fa-caret-up" aria-hidden="true"></i> </span>`
