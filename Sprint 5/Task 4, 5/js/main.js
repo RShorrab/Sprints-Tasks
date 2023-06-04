@@ -16,6 +16,7 @@ if(JSON.parse(localStorage.getItem("tasks")) != null)
 }
 if(display() == true) //check if the table has items to display
 {
+    sortAscByPriority(tasks)
     displayDiv.classList.remove("d-none");
 }
 
@@ -24,10 +25,12 @@ addBtn.onclick = function()
     if(addBtn.innerHTML == "Add Task")
     {
         addTask();
+        sortAscByPriority(tasks)
     }
     else
     {
         editTask();
+        sortAscByPriority(tasks)
     }
     displayDiv.classList.remove("d-none");
     display();
