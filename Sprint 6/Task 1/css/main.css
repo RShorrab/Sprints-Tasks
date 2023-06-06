@@ -1,0 +1,70 @@
+body
+{
+    margin: 0px;
+    padding: 0px;
+    background-image: url("../images/background_1.wide.jpeg");
+    transition: 0.3s all;
+}
+
+.fas:hover
+{
+    
+    transform: scale(1.15);
+    transition: all 1s;
+}
+#restLogo
+{
+    position: absolute;
+    top: 0px;
+    left: 55px;
+}
+#animatedO
+{
+    position: absolute;
+    top: 0;
+    left: 23px;
+    animation-name: oo;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+
+thead th, #inputsDiv, #displayDiv
+{
+    transition: 0.3s all;
+}
+
+.form-check-input 
+{
+    background-color: rgba(165, 132, 165, 0.527);
+    border: none;
+}
+  
+.form-check-input:checked 
+{
+    background-color:  rgba(70, 44, 70, 0.782);
+}
+  
+.form-check-input:focus 
+{
+    box-shadow: none;
+    border-color: rgb(255, 255, 255);
+}
+
+
+
+
+
+
+@keyframes oo 
+{
+    0% {left: 23px;}
+    25% {left: 27px;}
+    75% {left: 17px;}
+    100% {left: 23px;}
+}
+/* 
+@media only screen and (max-width: 500px)
+{
+
+
+} */
