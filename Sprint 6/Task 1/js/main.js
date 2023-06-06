@@ -69,15 +69,25 @@ addBtn.onclick = function()
 
 function addTask()
 {
+    let existTask = tasksArr.find((task)=> task.taskName == taskNameInput.value)
     if(taskNameInput.value != null && taskNameInput.value != '')
-    {
-        let task = new Task(taskNameInput.value, taskPriorityInput.value)
-        tasksArr.push(task);
-        localStorage.setItem("tasks", JSON.stringify(tasksArr));
-        document.getElementById("taskNameAlert").classList.add("d-none")
+    {   if(existTask)
+        {
+            document.getElementById("taskNameAlert").innerHTML = `<p> You already entered this task!</p> `
+            document.getElementById("taskNameAlert").classList.remove("d-none")
+        }
+        else
+        {
+            let task = new Task(taskNameInput.value, taskPriorityInput.value)
+            tasksArr.push(task);
+            localStorage.setItem("tasks", JSON.stringify(tasksArr));
+            document.getElementById("taskNameAlert").classList.add("d-none")
+        }
+
     }
     else
     {
+        document.getElementById("taskNameAlert").innerHTML = `<p>You should Enter the task name!</p> `
         document.getElementById("taskNameAlert").classList.remove("d-none")
         addBtn.disabled="true";
     }
