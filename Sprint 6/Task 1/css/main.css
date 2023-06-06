@@ -6,11 +6,13 @@ body
     transition: 0.3s all;
 }
 
-.fas:hover
+.fas, i
 {
-    
-    transform: scale(1.15);
     transition: all 1s;
+}
+.fas:hover, i:hover
+{
+    transform: scale(1.15);
 }
 #restLogo
 {

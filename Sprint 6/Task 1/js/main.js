@@ -10,17 +10,7 @@ var tasksArr = [];
 
 
 /* 
-display  ♪
-add task ♪
-edit task ♪
-delete task ♪
-sort ♪
-search ♪
-
-checkbox ♪
-change status icon ♪
-
-fix checkbox bug
+fix checkbox bug ...
 */
 
 class Task
@@ -63,12 +53,12 @@ class TaskMethods
         for(var i=0; i < tasksArr.length; i++)
         {
             trs+= ` ${tasksArr[i].done===true? `<tr id="${tasksArr[i].taskId}" class="opacity-50">`:`<tr id="${tasksArr[i].taskId}">`}
-                    <td> ${tasksArr[i].taskName} </td>
-                    <td> ${tasksArr[i].taskPriority} </td>
-                    <td> ${tasksArr[i].done===true? `<button class="btn btn-transparent shadow-none"> <i class="fa fa-check text-success status-btn done-true" aria-hidden="true"></i> </button>`: `<button class="btn btn-transparent shadow-none"> <i class="text-danger fw-bold status-btn done-false" aria-hidden="true">X</i> </button>`} </td>
+                    <td class="pt-3"> ${tasksArr[i].taskName} </td>
+                    <td class="pt-3"> ${tasksArr[i].taskPriority} </td>
+                    <td> ${tasksArr[i].done===true? `<button class="btn btn-transparent shadow-none"> <i class="fa fa-check text-success status-btn done-true pt-0 fs-4" aria-hidden="true"></i> </button>`: `<button class="btn btn-transparent shadow-none p-0 pt-1"> <i class="text-danger fw-bold fs-5 status-btn done-false " aria-hidden="true">X</i> </button>`} </td>
                     <td> <button onclick="TaskMethods.updateTask(${i})" class="btn btn-transparent shadow-none"> <i class="fas fa-edit fs-5 text-black-50"></i> </button>
                     <td> <button onClick="TaskMethods.deleteTask(${i})" class="btn btn-transparent shadow-none"> <i class="fas fa-trash-alt fs-5 text-danger"></i> </button> </td>
-                    <td> <input class="form-check-input me-4" type="checkbox"> </td>
+                    <td class="pt-3"> <input class="form-check-input checkbox me-4" type="checkbox" id="checkbox-${i}"></td>
                 </tr>`
         }
         if(trs == '')
@@ -324,66 +314,73 @@ document.addEventListener("click", (e)=>
         localStorage.setItem("tasks", JSON.stringify(tasksArr));
     }
 })
+
 //check ... still in progress -> once a change happens, the input cannot be selected! (affect delete function below)
-checkbox = Array.from(document.querySelectorAll("td input"))
-console.log(checkbox);
+let checkbox = Array.from(document.querySelectorAll('.checkbox'))
+let check_parent = document.getElementById("check-parent")
 let taskId;
 let task;
+
 document.addEventListener("click", (e)=>
 {
-    if (e.target.id == "check-parent") 
+    if(e.target == check_parent)
     {
-        if(e.target.checked==true)
-        {   
-            checkbox.map((check)=>
+        if(check_parent.checked == true)
+        {
+            //once a change happens, the input cannot be selected! (affect delete function below)
+            /* checkbox.map((checkInput)=>
             {
-                check.setAttribute("checked","")
-                check.checked = true
-                console.log(check);
-            })
+                checkInput.checked = true
+            })*/
+
+            
+            for (let i = 0; i < tasksArr.length; i++) //for now till find a solution for the above code..
+            {
+                if(document.getElementById(`checkbox-${i}`))
+                {
+                    document.getElementById(`checkbox-${i}`).checked = true
+                }
+            }
         }
         else
         {
-            checkbox.map((check)=>
+            for (let i = 0; i < tasksArr.length; i++) 
             {
-                check.removeAttribute("checked","")
-                check.checked = false
-            })
+                if(document.getElementById(`checkbox-${i}`))
+                {
+                    document.getElementById(`checkbox-${i}`).checked = false
+                }
+            }
         }
-
     }
-    else if (e.target.classList.contains("form-check-input")) 
+    else if(e.target.classList.contains("checkbox"))
     {
         if(e.target.checked==true)
         {
-            e.target.setAttribute("checked", "")
+            e.target.checked = true
         }
         else
         {
-            e.target.removeAttribute("checked", "")
+            e.target.checked = false
         }
-
     }
 })
+
 let deleteMulti = document.getElementById("delete-multi") 
 deleteMulti.addEventListener("click", ()=>
 {
-    if(document.getElementById("check-parent").checked==true)
-    {
-        tasksArr.length = 0;
-    }
+    if(check_parent.checked==true)
+        {tasksArr.length = 0}
     else
     {
-        checkbox.map((check)=>
+        checkbox.map((checkInput)=>
         {
-            taskId = check.parentElement.parentElement.id
+            taskId = checkInput.parentElement.parentElement.id
             task = tasksArr.find( (task)=> task.taskId == taskId)
-
-            if(check.checked === true)
+            if(checkInput.checked === true)
             {
                 tasksArr.splice(tasksArr.indexOf(task), 1)
             }
-
         })
     }
 
