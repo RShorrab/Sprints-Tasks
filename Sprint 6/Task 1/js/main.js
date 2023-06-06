@@ -212,12 +212,12 @@ searchBar.onkeyup = () =>
         if(tasksArr[i].taskName.toLowerCase().includes(val.toLowerCase()))
         {
             trs+= ` ${tasksArr[i].done===true? `<tr id="${tasksArr[i].taskId}" class="opacity-50">`:`<tr id="${tasksArr[i].taskId}">`}
-                    <td> ${tasksArr[i].taskName} </td>
-                    <td> ${tasksArr[i].taskPriority} </td>
-                    <td> ${tasksArr[i].done===true? `<button class="btn btn-transparent shadow-none"> <i class="fa fa-check text-success status-btn done-true" aria-hidden="true"></i> </button>`: `<button class="btn btn-transparent shadow-none"> <i class="text-danger fw-bold status-btn done-false" aria-hidden="true">X</i> </button>`} </td>
+                    <td class="pt-3"> ${tasksArr[i].taskName} </td>
+                    <td class="pt-3"> ${tasksArr[i].taskPriority} </td>
+                    <td> ${tasksArr[i].done===true? `<button class="btn btn-transparent shadow-none"> <i class="fa fa-check text-success status-btn done-true pt-0 fs-4" aria-hidden="true"></i> </button>`: `<button class="btn btn-transparent shadow-none p-0 pt-1"> <i class="text-danger fw-bold fs-5 status-btn done-false " aria-hidden="true">X</i> </button>`} </td>
                     <td> <button onclick="TaskMethods.updateTask(${i})" class="btn btn-transparent shadow-none"> <i class="fas fa-edit fs-5 text-black-50"></i> </button>
                     <td> <button onClick="TaskMethods.deleteTask(${i})" class="btn btn-transparent shadow-none"> <i class="fas fa-trash-alt fs-5 text-danger"></i> </button> </td>
-                    <td> <input class="form-check-input me-4" type="checkbox"> </td>
+                    <td class="pt-3"> <input class="form-check-input checkbox me-4" type="checkbox" id="checkbox-${i}"></td>
                 </tr>`
         }
     }
