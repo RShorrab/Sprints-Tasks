@@ -17,7 +17,7 @@ delete task ♪
 sort ♪
 search ♪
 
-checkbox
+checkbox ♪
 change status icon
 */
 
@@ -91,10 +91,10 @@ function display()
         trs+= ` ${tasksArr[i].done===true? `<tr id="${tasksArr[i].taskId}" class="opacity-50">`:`<tr id="${tasksArr[i].taskId}">`}
                 <td> ${tasksArr[i].taskName} </td>
                 <td> ${tasksArr[i].taskPriority} </td>
-                <td> ${tasksArr[i].done===true? `<button class="btn btn-transparent shadow-none"> <i class="fa fa-check text-success status-btn done-true" aria-hidden="true"></i> </button>`: `<button class="btn btn-transparent shadow-none"> <i class="fa fa-undo text-danger status-btn done-false" aria-hidden="true"></i> </button>`} </td>
+                <td> ${tasksArr[i].done===true? `<button class="btn btn-transparent shadow-none"> <i class="fa fa-check text-success status-btn done-true" aria-hidden="true"></i> </button>`: `<button class="btn btn-transparent shadow-none"> <i class="text-danger fw-bold status-btn done-false" aria-hidden="true">X</i> </button>`} </td>
                 <td> <button onclick="updateTask(${i})" class="btn btn-transparent shadow-none"> <i class="fas fa-edit fs-5 text-black-50"></i> </button>
                 <td> <button onClick="deleteTask(${i})" class="btn btn-transparent shadow-none"> <i class="fas fa-trash-alt fs-5 text-danger"></i> </button> </td>
-                <td> <input class="form-check-input me-1 check-child" type="checkbox"> </td>
+                <td> <input class="form-check-input me-4 check-child" type="checkbox"> </td>
             </tr>`
     }
     if(trs == '')
@@ -121,10 +121,6 @@ document.addEventListener("click", (e)=>
             e.target.parentElement.parentElement.parentElement.classList.remove("opacity-50")
             e.target.parentElement.innerHTML=`<i class="fa fa-undo text-danger status-btn done-false" aria-hidden="true"></i>`
             task.done = false
-
-            tasksArr[task]=task
-            display()//should be here to apply getDoneDoen() before using local storage
-            localStorage.setItem("tasks", JSON.stringify(tasksArr));
         }
         else if(e.target.classList.contains("done-false"))
         {
@@ -133,19 +129,81 @@ document.addEventListener("click", (e)=>
             e.target.parentElement.parentElement.parentElement.classList.add("opacity-50")
             e.target.parentElement.innerHTML = `<i class="fa fa-check text-success status-btn done-true" aria-hidden="true"></i> `
             task.done = true
-
-            tasksArr[task]=task
-            display() 
-            localStorage.setItem("tasks", JSON.stringify(tasksArr));
         }
+
+        tasksArr[task]=task
+        display()//should be here to apply getDoneDoen() before using local storage
+        localStorage.setItem("tasks", JSON.stringify(tasksArr));
     }
 })
 
 //check
+let checkbox = Array.from(document.querySelectorAll(".check-child"))
+let taskId;
+let task;
 document.addEventListener("click", (e)=>
 {
-    
+    if (e.target.id == "check-parent") 
+    {
+        if(e.target.checked==true)
+        {   
+            checkbox.map((check)=>
+            {
+            
+                check.setAttribute("checked","")
+                check.checked = true
+            })
+        }
+        else
+        {
+            checkbox.map((check)=>
+            {
+                check.removeAttribute("checked","")
+                check.checked = false
+            })
+        }
+
+    }
+    else if (e.target.classList.contains("form-check-input")) 
+    {
+        if(e.target.checked==true)
+        {
+            e.target.setAttribute("checked", "")
+        }
+        else
+        {
+            e.target.removeAttribute("checked", "")
+        }
+
+    }
 })
+let deleteMulti = document.getElementById("delete-multi") 
+deleteMulti.addEventListener("click", ()=>
+{
+    if(document.getElementById("check-parent").checked==true)
+    {
+        tasksArr.length = 0;
+    }
+    else
+    {
+        checkbox.map((check)=>
+        {
+            taskId = check.parentElement.parentElement.id
+            task = tasksArr.find( (task)=> task.taskId == taskId)
+
+            if(check.checked === true)
+            {
+                tasksArr.splice(tasksArr.indexOf(task), 1)
+            }
+
+        })
+    }
+
+    localStorage.setItem("tasks", JSON.stringify(tasksArr));
+    display()
+})
+
+
 
 
 
@@ -201,13 +259,13 @@ searchBar.onkeyup = function()
         if(tasksArr[i].taskName.toLowerCase().includes(val.toLowerCase()))
         {
             trs+= ` ${tasksArr[i].done===true? `<tr id="${tasksArr[i].taskId}" class="opacity-50">`:`<tr id="${tasksArr[i].taskId}">`}
-                <td> ${tasksArr[i].taskName} </td>
-                <td> ${tasksArr[i].taskPriority} </td>
-                <td> ${tasksArr[i].done===true? `<button class="btn btn-transparent shadow-none"> <i class="fa fa-check text-success status-btn done-true" aria-hidden="true"></i> </button>`: `<button class="btn btn-transparent shadow-none"> <i class="fa fa-undo text-danger status-btn done-false" aria-hidden="true"></i> </button>`} </td>
-                <td> <button onclick="updateTask(${i})" class="btn btn-transparent shadow-none"> <i class="fas fa-edit fs-5 text-black-50"></i> </button>
-                <td> <button onClick="deleteTask(${i})" class="btn btn-transparent shadow-none"> <i class="fas fa-trash-alt fs-5 text-danger"></i> </button> </td>
-                <td> <input class="form-check-input me-1 check-child" type="checkbox"> </td>
-            </tr>`
+                    <td> ${tasksArr[i].taskName} </td>
+                    <td> ${tasksArr[i].taskPriority} </td>
+                    <td> ${tasksArr[i].done===true? `<button class="btn btn-transparent shadow-none"> <i class="fa fa-check text-success status-btn done-true" aria-hidden="true"></i> </button>`: `<button class="btn btn-transparent shadow-none"> <i class="text-danger fw-bold status-btn done-false" aria-hidden="true">X</i> </button>`} </td>
+                    <td> <button onclick="updateTask(${i})" class="btn btn-transparent shadow-none"> <i class="fas fa-edit fs-5 text-black-50"></i> </button>
+                    <td> <button onClick="deleteTask(${i})" class="btn btn-transparent shadow-none"> <i class="fas fa-trash-alt fs-5 text-danger"></i> </button> </td>
+                    <td> <input class="form-check-input me-4 check-child" type="checkbox"> </td>
+                </tr>`
         }
     }
     document.getElementById("tableBody").innerHTML=trs;

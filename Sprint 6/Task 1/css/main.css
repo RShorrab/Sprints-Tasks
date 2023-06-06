@@ -28,10 +28,6 @@ body
     animation-iteration-count: infinite;
 }
 
-thead th, #inputsDiv, #displayDiv
-{
-    transition: 0.3s all;
-}
 
 .form-check-input 
 {
