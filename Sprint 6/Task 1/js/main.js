@@ -42,6 +42,20 @@ class Task
 class TaskMethods
 {
 
+    static getStorage()
+    {
+        if(JSON.parse(localStorage.getItem("tasks")) != null)
+        {
+            tasksArr = JSON.parse(localStorage.getItem("tasks"));
+            tasksArr = tasksArr.map((task)=> new Task(task.taskName, task.taskPriority, task.taskId, task.done))
+            TaskMethods.display();
+        }
+        if(TaskMethods.display() == true) //check if the table has items to display
+        {
+            TaskMethods.sortAscByPriority(tasksArr)
+            displayDiv.classList.remove("d-none");
+        }
+    }
     static display()
     {
         this.getDoneDown()
@@ -54,7 +68,7 @@ class TaskMethods
                     <td> ${tasksArr[i].done===true? `<button class="btn btn-transparent shadow-none"> <i class="fa fa-check text-success status-btn done-true" aria-hidden="true"></i> </button>`: `<button class="btn btn-transparent shadow-none"> <i class="text-danger fw-bold status-btn done-false" aria-hidden="true">X</i> </button>`} </td>
                     <td> <button onclick="TaskMethods.updateTask(${i})" class="btn btn-transparent shadow-none"> <i class="fas fa-edit fs-5 text-black-50"></i> </button>
                     <td> <button onClick="TaskMethods.deleteTask(${i})" class="btn btn-transparent shadow-none"> <i class="fas fa-trash-alt fs-5 text-danger"></i> </button> </td>
-                    <td> <input class="form-check-input me-4 check-child" type="checkbox"> </td>
+                    <td> <input class="form-check-input me-4" type="checkbox"> </td>
                 </tr>`
         }
         if(trs == '')
@@ -178,23 +192,11 @@ class TaskMethods
         })
         localStorage.setItem("tasks", JSON.stringify(tasksArr));
     }
-
-
 }
 
 
-if(JSON.parse(localStorage.getItem("tasks")) != null)
-{
-    tasksArr = JSON.parse(localStorage.getItem("tasks"));
-    tasksArr = tasksArr.map((task)=> new Task(task.taskName, task.taskPriority, task.taskId, task.done))
-    TaskMethods.display();
-}
-if(TaskMethods.display() == true) //check if the table has items to display
-{
-    TaskMethods.sortAscByPriority(tasksArr)
-    displayDiv.classList.remove("d-none");
-}
 
+TaskMethods.getStorage()
 addBtn.onclick = () => 
 {
     if(addBtn.innerHTML == "Add Task")
@@ -225,7 +227,7 @@ searchBar.onkeyup = () =>
                     <td> ${tasksArr[i].done===true? `<button class="btn btn-transparent shadow-none"> <i class="fa fa-check text-success status-btn done-true" aria-hidden="true"></i> </button>`: `<button class="btn btn-transparent shadow-none"> <i class="text-danger fw-bold status-btn done-false" aria-hidden="true">X</i> </button>`} </td>
                     <td> <button onclick="TaskMethods.updateTask(${i})" class="btn btn-transparent shadow-none"> <i class="fas fa-edit fs-5 text-black-50"></i> </button>
                     <td> <button onClick="TaskMethods.deleteTask(${i})" class="btn btn-transparent shadow-none"> <i class="fas fa-trash-alt fs-5 text-danger"></i> </button> </td>
-                    <td> <input class="form-check-input me-4 check-child" type="checkbox"> </td>
+                    <td> <input class="form-check-input me-4" type="checkbox"> </td>
                 </tr>`
         }
     }
@@ -251,6 +253,45 @@ taskPriorityInput.onkeyup = () => //Task verification
         return true;
     }
 }
+
+
+//sorting
+let sortingByPriority = document.getElementById("sortingByPriority")
+sortingByPriority.addEventListener("click", e => {
+    if(sortingByPriority.classList.contains("Asc"))
+    {
+        TaskMethods.sortAscByPriority(tasksArr)
+        sortingByPriority.classList.remove("Asc")
+        sortingByPriority.classList.add("Des")
+        sortingByPriority.innerHTML = `Priority <span> <i class="fa fa-caret-down" aria-hidden="true"></i> </span>`
+    }
+    else if(sortingByPriority.classList.contains("Des"))
+    {
+        TaskMethods.sortDesByPriority(tasksArr)
+        sortingByPriority.classList.remove("Des")
+        sortingByPriority.classList.add("Asc")
+        sortingByPriority.innerHTML = `Priority <span> <i class="fa fa-caret-up" aria-hidden="true"></i> </span>`
+    }
+})
+let sortingByName = document.getElementById("sortingByName")
+sortingByName.addEventListener("click", e => {
+    if(sortingByName.classList.contains("Asc"))
+    {
+        TaskMethods.sortAscByName(tasksArr)
+        sortingByName.classList.remove("Asc")
+        sortingByName.classList.add("Des")
+        sortingByName.innerHTML = `Task Name <span> <i class="fa fa-caret-down" aria-hidden="true"></i> </span>`
+    }
+    else if(sortingByName.classList.contains("Des"))
+    {
+        TaskMethods.sortDesByName(tasksArr)
+        sortingByName.classList.remove("Des")
+        sortingByName.classList.add("Asc")
+        sortingByName.innerHTML = `Task Name <span> <i class="fa fa-caret-up" aria-hidden="true"></i> </span>`
+    }
+})
+
+
 
 
 //status
@@ -283,8 +324,9 @@ document.addEventListener("click", (e)=>
         localStorage.setItem("tasks", JSON.stringify(tasksArr));
     }
 })
-//check
-let checkbox = Array.from(document.querySelectorAll(".check-child"))
+//check ... still in progress -> once a change happens, the input cannot be selected! (affect delete function below)
+checkbox = Array.from(document.querySelectorAll("td input"))
+console.log(checkbox);
 let taskId;
 let task;
 document.addEventListener("click", (e)=>
@@ -297,6 +339,7 @@ document.addEventListener("click", (e)=>
             {
                 check.setAttribute("checked","")
                 check.checked = true
+                console.log(check);
             })
         }
         else
@@ -348,41 +391,4 @@ deleteMulti.addEventListener("click", ()=>
     TaskMethods.display()
 })
 
-
-//sorting
-let sortingByPriority = document.getElementById("sortingByPriority")
-sortingByPriority.addEventListener("click", e => {
-    if(sortingByPriority.classList.contains("Asc"))
-    {
-        TaskMethods.sortAscByPriority(tasksArr)
-        sortingByPriority.classList.remove("Asc")
-        sortingByPriority.classList.add("Des")
-        sortingByPriority.innerHTML = `Priority <span> <i class="fa fa-caret-down" aria-hidden="true"></i> </span>`
-    }
-    else if(sortingByPriority.classList.contains("Des"))
-    {
-        TaskMethods.sortDesByPriority(tasksArr)
-        sortingByPriority.classList.remove("Des")
-        sortingByPriority.classList.add("Asc")
-        sortingByPriority.innerHTML = `Priority <span> <i class="fa fa-caret-up" aria-hidden="true"></i> </span>`
-    }
-})
-
-let sortingByName = document.getElementById("sortingByName")
-sortingByName.addEventListener("click", e => {
-    if(sortingByName.classList.contains("Asc"))
-    {
-        TaskMethods.sortAscByName(tasksArr)
-        sortingByName.classList.remove("Asc")
-        sortingByName.classList.add("Des")
-        sortingByName.innerHTML = `Task Name <span> <i class="fa fa-caret-down" aria-hidden="true"></i> </span>`
-    }
-    else if(sortingByName.classList.contains("Des"))
-    {
-        TaskMethods.sortDesByName(tasksArr)
-        sortingByName.classList.remove("Des")
-        sortingByName.classList.add("Asc")
-        sortingByName.innerHTML = `Task Name <span> <i class="fa fa-caret-up" aria-hidden="true"></i> </span>`
-    }
-})
 
