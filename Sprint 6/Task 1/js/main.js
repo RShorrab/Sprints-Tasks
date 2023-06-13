@@ -31,7 +31,6 @@ class Task
 
 class TaskMethods
 {
-
     static getStorage()
     {
         if(JSON.parse(localStorage.getItem("tasks")) != null)
