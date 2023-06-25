@@ -8,7 +8,7 @@
 ```
 
 #### Products
-- [GET] `/products/` -> Get all products
+- [GET] `/products/`
 - [GET] `/products/categorized` 
 - [GET] `/products/curr=:curr`
 - [GET] `/products/:id` 
@@ -24,7 +24,7 @@
 ```
 
 #### Categories
-- [GET] `/categories/` -> Get all categories
+- [GET] `/categories/` 
 - [GET] `/categories/:id` 
 - [POST] `/categories/add`               [Login required]
 - [PUT] `/categories/update/:id`         [Login required, Admins only]
