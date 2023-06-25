@@ -3,8 +3,8 @@
 - [POST] `/user/signin`
 - [GET] `/user/` -> Get all users
 ```
-  email: string
-  password: string
+  "email": "string"
+  "password": "string"
 ```
 
 #### Products
@@ -16,11 +16,11 @@
 - [PUT] `/products/update/:id`         [Login required]
 - [DELETE] `/products/delete/:id`      [Login required]
 ```
-  title: string
-  price: number
-  description: string
-  categoryId: number
-  images: array of strings
+  "title": "string"
+  "price": "number"
+  "description": "string"
+  "categoryId": "number"
+  "images": "array of strings"  -> Must be a link, you can use this link.. https://placeimg.com/640/480/any
 ```
 
 #### Categories
@@ -30,8 +30,8 @@
 - [PUT] `/categories/update/:id`         [Login required, Admins only]
 - [DELETE] `/categories/delete/:id`      [Login required, Admins only]
 ```
-  name: string
-  image: strung   -> You can use this link.. https://placeimg.com/640/480/any
+  "name": "string"
+  "image": "string"   -> Must be a link, you can use this link.. https://placeimg.com/640/480/any
 ```
 
 
