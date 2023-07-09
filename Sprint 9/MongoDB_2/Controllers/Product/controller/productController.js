@@ -61,7 +61,6 @@ const deleteProduct = async (req, res)=>
     try 
     {
         const product = await productModel.findById(req.params.id)
-        const user = await userModel.findById(req.user._id)
         if(!product)
         {
             res.status(200).json({message: "Invalid product id"})
@@ -69,9 +68,8 @@ const deleteProduct = async (req, res)=>
         else
         {
             await productModel.findByIdAndDelete(product._id)
-            if(user.cart.includes(req.params.id))
-                await userModel.findByIdAndUpdate(req.user._id, {$pull: {cart: req.params.id} }) //remove it from cart 
-                
+            await userModel.updateMany({cart: {$in: req.params.id}}, {$pull: {cart: req.params.id}} )  // remove from users cart
+            
             res.status(200).json({message: "product deleted successfully"})
         }
 
