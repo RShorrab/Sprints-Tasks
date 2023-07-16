@@ -1,0 +1,15 @@
+<div class="p-5 pb-4 mb-4 bg-light rounded-3">
+    <div class="container-fluid py-5">
+      <h1 class="display-5 fw-bold">Home</h1>
+      <p class="col-md-8 fs-4">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Modi, numquam culpa illo id facilis quibusdam eveniet consequuntur eius assumenda enim vel voluptate tempora nam, qui, ut minima laborum. Amet autem, asperiores adipisci fugit minus reiciendis ut alias labore.</p>
+      <button class="btn btn-warning btn-lg mb-3" type="button" (click)="sayHello()" >Home says hello!</button>
+
+      <div class="card" style="width:25rem;"  [style.display]="clicked? 'block' : 'none' " >
+        <div class="card-body">
+          <h5 class="card-title">Hello!</h5>
+          <p class="card-text">Welcome to my first angular project <i class="fa-regular fa-face-smile-beam"></i> </p>
+        </div>
+      </div>
+
+    </div>
+</div>

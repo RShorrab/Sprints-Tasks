@@ -1,0 +1,10 @@
+<div class="products-list-div">
+    <div class="row pt-4 text-center">
+        <div *ngFor="let product of productsList"  class="col-lg-4 col-md-6 mb-4" >
+            <img src={{product.image}}  alt="product image" class="img-fluid rounded">
+            <h6 class="mt-2 mb-0"> {{product.name}} </h6>
+            <p class="text-muted mb-1"> ${{product.price}} </p>
+            <button class="btn btn-dark py-0" (click)="setSelectedProduct(product.id)"> Select </button>
+        </div>
+    </div>
+</div>
